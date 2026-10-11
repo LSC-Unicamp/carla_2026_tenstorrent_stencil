@@ -14,22 +14,6 @@
 #include <utility>
 #include <vector>
 
-/** **How the Program Works**
- *
- * A matrix is received through the input.bin file in float format.
- *
- * This matrix is converted to bfloat16 and tiled.
- *
- * Next, we assign a Tensix core to be responsible for each tile. This Tensix
- * will read its tile from DRAM and send it to its neighbors.
- *
- * Then the iterations begin. After each iteration, the Tensix cores must
- * communicate to transfer the tiles among themselves.
- *
- * After the iterations, the Tensix cores send the tiles they were responsible
- * for back to the DRAM.
- */
-
 using namespace tt::tt_metal;
 
 #ifndef JACOBI_KERNEL_ROOT
